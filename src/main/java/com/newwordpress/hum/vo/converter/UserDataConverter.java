@@ -22,7 +22,6 @@ public class UserDataConverter {
         userDataVO.setFirstName(userData.getFirstName());
         userDataVO.setLastName(userData.getLastName());
         userDataVO.setPicture(userData.getPicture());
-
         return userDataVO;
     }
 }

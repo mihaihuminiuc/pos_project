@@ -23,8 +23,9 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_data_id")
+
+    //fetch lazy
+    @OneToOne(fetch = FetchType.EAGER, optional=false,cascade=CascadeType.ALL, mappedBy="user",targetEntity=UserData.class)
     private UserData userData;
 
     public Long getId() {

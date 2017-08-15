@@ -6,6 +6,7 @@ import com.newwordpress.hum.service.SecurityService;
 import com.newwordpress.hum.service.UserDataService;
 import com.newwordpress.hum.service.UserService;
 import com.newwordpress.hum.validator.UserValidator;
+import com.newwordpress.hum.vo.UserDataVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -20,13 +24,13 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private UserDataService userDataService;
-
-    @Autowired
     private SecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private HttpSession httpSession;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -47,34 +51,33 @@ public class UserController {
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
+        httpSession.setAttribute("username",userForm.getUsername());
+
         return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
+
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
+        //httpSession.setAttribute("username",userForm.getUsername());
+
+
         return "login";
     }
 
+
+
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
-        model.addAttribute("userDataForm", new UserData());
-        return "welcome";
-    }
 
-    @RequestMapping(value = {"/welcome"}, method = RequestMethod.POST)
-    public String accountDetails(@ModelAttribute("userDataForm") UserData userForm, BindingResult bindingResult, Model model) {
-
-        if (bindingResult.hasErrors()) {
-            return "welcome";
-        }
-
-        userDataService.save(userForm);
+        httpSession.setAttribute("username","huminiucmihai32@gmail.com");
+        //model.addAttribute("userForm",new User());
         return "welcome";
     }
 }

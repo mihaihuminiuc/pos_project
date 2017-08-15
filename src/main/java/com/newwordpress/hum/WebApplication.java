@@ -6,7 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 
-@SpringBootApplication(scanBasePackages={"com.hellokoding.auth"})
+@SpringBootApplication(scanBasePackages={"com.newwordpress.hum"})
 
 public class WebApplication extends SpringBootServletInitializer {
     @Override

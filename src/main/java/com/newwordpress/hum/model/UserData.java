@@ -59,16 +59,16 @@ public class UserData implements Serializable {
         this.picture = picture;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="user_data_id", nullable=false)
     private Long id;
 
@@ -92,10 +92,9 @@ public class UserData implements Serializable {
     @Column(name="picture", nullable=false)
     private String picture;
 
-    @Column(name="user_id", unique=true, nullable=false)
-    @GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen", strategy="foreign", parameters=@org.hibernate.annotations.Parameter(name="property", value="user"))
-    private Long userId;
+    @OneToOne(optional=false)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }

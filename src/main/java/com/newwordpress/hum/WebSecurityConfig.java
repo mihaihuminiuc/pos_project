@@ -33,6 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .and()
                 .logout()
+                    .permitAll()
+                    .and()
+                .authorizeRequests()
+                    .antMatchers("/resources/**","/userdata")
                     .permitAll();
     }
 

@@ -53,11 +53,21 @@ public class UserDataVO {
         this.picture = picture;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private String description;
     private String picture;
+    private Long userId;
+
 
 }
