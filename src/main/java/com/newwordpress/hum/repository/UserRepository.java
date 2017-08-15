@@ -1,6 +1,6 @@
-package com.hellokoding.auth.repository;
+package com.newwordpress.hum.repository;
 
-import com.hellokoding.auth.model.User;
+import com.newwordpress.hum.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

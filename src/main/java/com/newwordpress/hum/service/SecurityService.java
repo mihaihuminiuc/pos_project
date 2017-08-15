@@ -1,4 +1,4 @@
-package com.hellokoding.auth.service;
+package com.newwordpress.hum.service;
 
 public interface SecurityService {
     String findLoggedInUsername();

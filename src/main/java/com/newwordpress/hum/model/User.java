@@ -1,4 +1,4 @@
-package com.hellokoding.auth.model;
+package com.newwordpress.hum.model;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -6,14 +6,27 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
-    private Long id;
-    private String username;
-    private String password;
-    private String passwordConfirm;
-    private Set<Role> roles;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="user_id")
+    private Long id;
+
+    @Column(name="user_name")
+    private String username;
+
+    @Column(name="user_password")
+    private String password;
+
+    private String passwordConfirm;
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_data_id")
+    private UserData userData;
+
     public Long getId() {
         return id;
     }
@@ -47,13 +60,20 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public UserData getUserDatas() {
+        return userData;
+    }
+
+    public void setUserDatas(UserData userData) {
+        this.userData = userData;
     }
 }

@@ -1,9 +1,11 @@
-package com.hellokoding.auth.web;
+package com.newwordpress.hum.web;
 
-import com.hellokoding.auth.model.User;
-import com.hellokoding.auth.service.SecurityService;
-import com.hellokoding.auth.service.UserService;
-import com.hellokoding.auth.validator.UserValidator;
+import com.newwordpress.hum.model.User;
+import com.newwordpress.hum.model.UserData;
+import com.newwordpress.hum.service.SecurityService;
+import com.newwordpress.hum.service.UserDataService;
+import com.newwordpress.hum.service.UserService;
+import com.newwordpress.hum.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserDataService userDataService;
 
     @Autowired
     private SecurityService securityService;
@@ -58,6 +63,18 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+        model.addAttribute("userDataForm", new UserData());
+        return "welcome";
+    }
+
+    @RequestMapping(value = {"/welcome"}, method = RequestMethod.POST)
+    public String accountDetails(@ModelAttribute("userDataForm") UserData userForm, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            return "welcome";
+        }
+
+        userDataService.save(userForm);
         return "welcome";
     }
 }

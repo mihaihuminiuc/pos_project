@@ -1,8 +1,8 @@
-package com.hellokoding.auth.service;
+package com.newwordpress.hum.service;
 
-import com.hellokoding.auth.model.Role;
-import com.hellokoding.auth.model.User;
-import com.hellokoding.auth.repository.UserRepository;
+import com.newwordpress.hum.model.Role;
+import com.newwordpress.hum.model.User;
+import com.newwordpress.hum.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
