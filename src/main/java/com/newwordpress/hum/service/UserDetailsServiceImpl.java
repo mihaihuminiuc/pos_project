@@ -1,8 +1,8 @@
 package com.newwordpress.hum.service;
 
-import com.newwordpress.hum.model.Role;
-import com.newwordpress.hum.model.User;
-import com.newwordpress.hum.repository.UserRepository;
+import com.newwordpress.hum.persistence.model.user.Role;
+import com.newwordpress.hum.persistence.model.user.User;
+import com.newwordpress.hum.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

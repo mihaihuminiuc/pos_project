@@ -1,8 +1,7 @@
 package com.newwordpress.hum.service;
 
-import com.newwordpress.hum.model.UserData;
-import com.newwordpress.hum.repository.UserDataRepository;
-import com.newwordpress.hum.vo.UserDataVO;
+import com.newwordpress.hum.persistence.model.user.UserData;
+import com.newwordpress.hum.persistence.repository.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

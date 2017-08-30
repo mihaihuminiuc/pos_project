@@ -1,6 +1,5 @@
-package com.newwordpress.hum.model;
+package com.newwordpress.hum.persistence.model.user;
 
-import org.hibernate.annotations.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.persistence.Entity;

@@ -1,12 +1,9 @@
 package com.newwordpress.hum.web;
 
-import com.newwordpress.hum.model.User;
-import com.newwordpress.hum.model.UserData;
+import com.newwordpress.hum.persistence.model.user.User;
 import com.newwordpress.hum.service.SecurityService;
-import com.newwordpress.hum.service.UserDataService;
 import com.newwordpress.hum.service.UserService;
 import com.newwordpress.hum.validator.UserValidator;
-import com.newwordpress.hum.vo.UserDataVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 

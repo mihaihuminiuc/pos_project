@@ -1,7 +1,6 @@
-package com.newwordpress.hum.repository;
+package com.newwordpress.hum.persistence.repository;
 
-import com.newwordpress.hum.model.UserData;
-import com.newwordpress.hum.vo.UserDataVO;
+import com.newwordpress.hum.persistence.model.user.UserData;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

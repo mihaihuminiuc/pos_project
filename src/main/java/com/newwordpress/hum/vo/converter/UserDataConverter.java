@@ -1,6 +1,6 @@
 package com.newwordpress.hum.vo.converter;
 
-import com.newwordpress.hum.model.UserData;
+import com.newwordpress.hum.persistence.model.user.UserData;
 import com.newwordpress.hum.vo.UserDataVO;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.newwordpress.hum.model;
+package com.newwordpress.hum.persistence.model.user;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

@@ -1,7 +1,6 @@
 package com.newwordpress.hum.service;
 
-import com.newwordpress.hum.model.UserData;
-import com.newwordpress.hum.vo.UserDataVO;
+import com.newwordpress.hum.persistence.model.user.UserData;
 
 /**
  * Created by humin on 4/8/2017.

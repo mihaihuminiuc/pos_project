@@ -1,13 +1,11 @@
 package com.newwordpress.hum.service;
 
-import com.newwordpress.hum.model.User;
-import com.newwordpress.hum.repository.RoleRepository;
-import com.newwordpress.hum.repository.UserRepository;
-import com.newwordpress.hum.vo.UserDataVO;
+import com.newwordpress.hum.persistence.model.user.User;
+import com.newwordpress.hum.persistence.repository.RoleRepository;
+import com.newwordpress.hum.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 

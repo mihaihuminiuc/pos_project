@@ -1,11 +1,10 @@
 package com.newwordpress.hum.web;
 
-import com.newwordpress.hum.model.User;
-import com.newwordpress.hum.model.UserData;
-import com.newwordpress.hum.repository.UserRepository;
+import com.newwordpress.hum.persistence.model.user.User;
+import com.newwordpress.hum.persistence.model.user.UserData;
+import com.newwordpress.hum.persistence.repository.UserRepository;
 import com.newwordpress.hum.service.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
