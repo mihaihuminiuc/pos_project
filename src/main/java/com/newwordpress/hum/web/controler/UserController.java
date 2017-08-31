@@ -1,4 +1,4 @@
-package com.newwordpress.hum.web;
+package com.newwordpress.hum.web.controler;
 
 import com.newwordpress.hum.persistence.model.user.User;
 import com.newwordpress.hum.service.SecurityService;

@@ -1,4 +1,4 @@
-package com.newwordpress.hum.web;
+package com.newwordpress.hum.web.controler;
 
 import org.springframework.stereotype.Controller;
 
