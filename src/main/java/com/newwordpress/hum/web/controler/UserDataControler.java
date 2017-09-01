@@ -4,6 +4,7 @@ import com.newwordpress.hum.persistence.model.user.User;
 import com.newwordpress.hum.persistence.model.user.UserData;
 import com.newwordpress.hum.persistence.repository.UserRepository;
 import com.newwordpress.hum.service.UserDataService;
+import com.newwordpress.hum.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Locale;
 
 /**
  * Created by humin on 4/27/2017.
@@ -23,43 +25,20 @@ import javax.servlet.http.HttpSession;
 public class UserDataControler {
 
     @Autowired
-    private UserDataService userDataService;
+    ActiveUserStore activeUserStore;
 
     @Autowired
-    private UserRepository userRepository;
+    UserService userService;
 
-    @Autowired
-    private HttpSession httpSession;
-
-    @RequestMapping(value = {"/userdata"}, method = RequestMethod.GET)
-    public ModelAndView accountDetails() {
-
-        UserData userData;
-        ModelAndView model = new ModelAndView();
-        if(httpSession!=null){
-            userData=userRepository.findByUsername(httpSession.getAttribute("username").toString()).getUserDatas();
-            model.addObject("userDataForm",userData );
-        }
-
-        return model;
+    @RequestMapping(value = "/loggedUsers", method = RequestMethod.GET)
+    public String getLoggedUsers(final Locale locale, final Model model) {
+        model.addAttribute("users", activeUserStore.getUsers());
+        return "users";
     }
 
-    @RequestMapping(value = {"/userdata"}, method = RequestMethod.POST)
-    public String accountDetails(@ModelAttribute("userDataForm") UserData userForm, BindingResult bindingResult, Model model) {
-
-        User user;
-
-        if (bindingResult.hasErrors()) {
-            return "userdata";
-        }
-
-        if(httpSession!=null){
-            user=userRepository.findByUsername(httpSession.getAttribute("username").toString());
-            httpSession.setAttribute("username",user.getUsername());
-            userForm.setUser(user);
-        }
-
-        userDataService.save(userForm);
-        return "userdata";
+    @RequestMapping(value = "/loggedUsersFromSessionRegistry", method = RequestMethod.GET)
+    public String getLoggedUsersFromSessionRegistry(final Locale locale, final Model model) {
+        model.addAttribute("users", userService.getUsersFromSessionRegistry());
+        return "users";
     }
 }
