@@ -1,8 +1,8 @@
 package com.newwordpress.hum.service;
 
-import com.newwordpress.hum.persistence.model.user.PasswordResetToken;
-import com.newwordpress.hum.persistence.model.user.User;
-import com.newwordpress.hum.persistence.model.user.VerificationToken;
+import com.newwordpress.hum.persistence.model.PasswordResetToken;
+import com.newwordpress.hum.persistence.model.User;
+import com.newwordpress.hum.persistence.model.VerificationToken;
 import com.newwordpress.hum.web.dto.UserDto;
 import com.newwordpress.hum.web.error.UserAlreadyExistException;
 

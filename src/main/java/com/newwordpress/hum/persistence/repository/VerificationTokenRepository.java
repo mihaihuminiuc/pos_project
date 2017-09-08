@@ -1,7 +1,7 @@
 package com.newwordpress.hum.persistence.repository;
 
-import com.newwordpress.hum.persistence.model.user.User;
-import com.newwordpress.hum.persistence.model.user.VerificationToken;
+import com.newwordpress.hum.persistence.model.User;
+import com.newwordpress.hum.persistence.model.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

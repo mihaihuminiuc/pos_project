@@ -1,6 +1,6 @@
 package com.newwordpress.hum.service.registration;
 
-import com.newwordpress.hum.persistence.model.user.User;
+import com.newwordpress.hum.persistence.model.User;
 import org.springframework.context.ApplicationEvent;
 
 import java.util.Locale;

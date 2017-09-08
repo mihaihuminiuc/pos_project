@@ -1,7 +1,7 @@
 package com.newwordpress.hum.service;
 
-import com.newwordpress.hum.persistence.model.user.Role;
-import com.newwordpress.hum.persistence.model.user.User;
+import com.newwordpress.hum.persistence.model.Role;
+import com.newwordpress.hum.persistence.model.User;
 import com.newwordpress.hum.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +16,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
+public class UserDetailsServiceImpl {
+    /*implements UserDetailsService{
+
     @Autowired
     private UserRepository userRepository;
 
@@ -31,5 +33,5 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         }
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-    }
+    }*/
 }
