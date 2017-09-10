@@ -86,6 +86,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(accountDto.getEmail());
         user.setUsing2FA(accountDto.isUsing2FA());
         user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
+        user.setEnabled(true);
         return repository.save(user);
     }
 

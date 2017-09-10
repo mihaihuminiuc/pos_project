@@ -1,8 +1,8 @@
-package com.newwordpress.hum.service.registration.listener;
+package com.newwordpress.hum.registration.listener;
 
 import com.newwordpress.hum.persistence.model.User;
 import com.newwordpress.hum.service.UserService;
-import com.newwordpress.hum.service.registration.OnRegistrationCompleteEvent;
+import com.newwordpress.hum.registration.OnRegistrationCompleteEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;

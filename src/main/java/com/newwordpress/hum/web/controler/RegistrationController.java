@@ -3,9 +3,9 @@ package com.newwordpress.hum.web.controler;
 
 import com.newwordpress.hum.persistence.model.User;
 import com.newwordpress.hum.persistence.model.VerificationToken;
+import com.newwordpress.hum.registration.OnRegistrationCompleteEvent;
 import com.newwordpress.hum.security.ISecurityUserService;
 import com.newwordpress.hum.service.UserService;
-import com.newwordpress.hum.service.registration.OnRegistrationCompleteEvent;
 import com.newwordpress.hum.web.dto.PasswordDto;
 import com.newwordpress.hum.web.dto.UserDto;
 import com.newwordpress.hum.web.error.InvalidOldPasswordException;

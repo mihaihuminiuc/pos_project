@@ -1,4 +1,4 @@
-package com.newwordpress.hum.service.registration;
+package com.newwordpress.hum.registration;
 
 import com.newwordpress.hum.persistence.model.User;
 import org.springframework.context.ApplicationEvent;

@@ -8,29 +8,55 @@ import javax.persistence.*;
  * Created by humin on 4/11/2017.
  */
 @Entity
-@Table(name="text")
+@Table(name="page_content")
 public class Text {
-    public Long getId_text() {
-        return id_text;
+
+    public Long getIdText() {
+        return idText;
     }
 
-    public void setId_text(Long id_text) {
-        this.id_text = id_text;
+    public void setIdText(Long idText) {
+        this.idText = idText;
     }
 
-    public String getText_content() {
-        return text_content;
+    public String getTextContent() {
+        return textContent;
     }
 
-    public void setText_content(String text_content) {
-        this.text_content = text_content;
+    public void setTextContent(String textContent) {
+        this.textContent = textContent;
+    }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
+    public int getPageName() {
+        return pageName;
+    }
+
+    public void setPageName(int pageName) {
+        this.pageName = pageName;
     }
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id_text;
+    private Long idText;
 
     @NotEmpty
-    @Column(name="TEXT_CONTENT", nullable=false)
-    private String text_content;
+    @Column(name="PAGE_CONTENT", nullable=false)
+    private String textContent;
+
+    @NotEmpty
+    @Column(name="PAGE_AUTHOR", nullable=false)
+    private int authorId;
+
+    @NotEmpty
+    @Column(name="PAGE_NAME", nullable=false)
+    private int pageName;
+
 }
