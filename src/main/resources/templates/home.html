@@ -11,29 +11,82 @@
         jQuery(function() {
             jQuery('textarea#froala-editor').froalaEditor()
         });
+    </script>
+    <script type="text/javascript">
+
+        var editboxHTML =
+            '<html class="expand close">' +
+            '<head>' +
+            '<style type="text/css">' +
+            '.expand { width: 100%; height: 100%; }' +
+            '.close { border: none; margin: 0px; padding: 0px; }' +
+            'html,body { overflow: hidden; }' +
+            '</style>' +
+            '</head>' +
+            '<body class="expand close" onload="document.f.ta.focus(); document.f.ta.select();">' +
+            '<form class="expand close" name="f">' +
+            '<textarea class="expand close" style="background: #def;" name="ta" wrap="hard" spellcheck="false">' +
+            '</textarea>' +
+            '</form>' +
+            '</body>' +
+            '</html>';
+
+        var defaultStuff = '<h3>Welcome to the real-time HTML editor!</h3>\n' +
+            '<p>Type HTML in the textarea above, and it will magically appear in the frame on the right side.</p>';
+
+
+        var old = '';
+
+        function init()
+        {
+            window.editbox.document.write(editboxHTML);
+            window.editbox.document.close();
+            window.editbox.document.f.ta.value = defaultStuff;
+            update();
+        }
+
+        function update()
+        {
+            var textarea = window.editbox.document.f.ta;
+            var d = dynamicframe.document;
+
+            if (old != textarea.value) {
+                old = textarea.value;
+                d.open();
+                d.write(old);
+                if (old.replace(/[\r\n]/g,'') == defaultStuff.replace(/[\r\n]/g,''))
+                    d.write(extraStuff);
+                d.close();
+            }
+
+            window.setTimeout(update, 150);
+        }
 
     </script>
+
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#" th:text="#{label.pages.home.title}">home</a>
-    </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
-      </ul>
-  </div>
-</nav>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" th:text="#{label.pages.home.title}">home</a>
+        </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+          </ul>
+      </div>
+    </nav>
+
     <div class="container">
             <h1 th:text="#{label.pages.home.message}">home</h1>
     </div>
-    <div>
-        <textarea id="froala-editor">
 
-        </textarea>
-
-    </div>
+    <body aligresizable="yes" rows="*,50%" onload="init();">
+        <!-- about:blank confuses opera, so use javascript: URLs instead -->
+        <iframe name="editbox" src="javascript:'';"></iframe>
+        <iframe name="dynamicframe" src="javascript:'';"></iframe>
+    </body>
 </body>
 
 </html>

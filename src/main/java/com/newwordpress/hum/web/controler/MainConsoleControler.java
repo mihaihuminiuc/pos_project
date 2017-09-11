@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,10 +38,10 @@ public class MainConsoleControler {
     @Autowired
     private ContentRepository contentRepository;
 
-            @RequestMapping(value = "/home", method = RequestMethod.GET)
-        public String confirmRegistration(final Model model, @RequestParam("token") final String token) throws UnsupportedEncodingException {
-                model.addAttribute("froala-editor",token);
-                return "trtataraa";
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+        public String setupMainConsole(final ModelMap model) throws UnsupportedEncodingException {
+                //model.addAttribute("pageContent","asd");
+                return "home";
         }
 
     }
