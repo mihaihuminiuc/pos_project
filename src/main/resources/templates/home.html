@@ -54,14 +54,59 @@
                 old = textarea.value;
                 d.open();
                 d.write(old);
-                if (old.replace(/[\r\n]/g,'') == defaultStuff.replace(/[\r\n]/g,''))
-                    d.write(extraStuff);
                 d.close();
             }
 
             window.setTimeout(update, 150);
         }
 
+    </script>
+    <style type="text/css">
+        .wrapper{width:500px;margin-left:auto;margin-right:auto}
+        label{padding-left:0 !important}
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(
+            function(){
+                $("#createPage").click(
+                    function () {
+                        var content = $('div#edit').froalaEditor('html.get');
+                        var name = $('#name').val();
+                        var description = $('#description').val();
+                        var page = {
+                            name : name,
+                            description  : description,
+                            content       : content
+                        };
+                        /*$.post('/page', { name:"test",
+                                description: "ceva",
+                                content: content},
+                            function(returnedData){
+                                console.log(returnedData);
+                            }).fail(function(){
+                            console.log("error");
+                        });*/
+                        var settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": "http://localhost:8090/page",
+                            "method": "POST",
+                            "headers": {
+                                "content-type": "application/json",
+                                "cache-control": "no-cache"
+                            },
+                            "processData": false,
+                            "data": JSON.stringify(page)
+                        };
+
+                        $.ajax(settings).done(function (response) {
+                            window.location.replace("http://localhost:8090/modules/page/viewPage.html?id="+response);
+                        });
+                    }
+                );
+            }
+        );
     </script>
 
 </head>
@@ -81,12 +126,15 @@
     <div class="container">
             <h1 th:text="#{label.pages.home.message}">home</h1>
     </div>
-
-    <body aligresizable="yes" rows="*,50%" onload="init();">
+    <form name='f' action="home" method='POST'>
+        <body aligresizable="yes" rows="*,50%" onload="init();">
         <!-- about:blank confuses opera, so use javascript: URLs instead -->
-        <iframe name="editbox" src="javascript:'';"></iframe>
-        <iframe name="dynamicframe" src="javascript:'';"></iframe>
-    </body>
+            <iframe name="editbox" src="javascript:'';"></iframe>
+            <iframe name="dynamicframe" src="javascript:'';"></iframe>
+        </body>
+
+        <input class="btn btn-primary" type="submit" th:value="#{label.form.submit}" />
+    </form>
 </body>
 
 </html>
